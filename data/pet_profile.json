@@ -1,0 +1,19 @@
+{
+  "species": "Dog",
+  "breed": "Mixed breed dog",
+  "name": "Taro",
+  "gender": "Male",
+  "age": "1",
+  "color": "White",
+  "fur_length": "Long",
+  "ear": "Other",
+  "tail": "Other",
+  "pattern": "Other",
+  "memo": "Still young and good puppy",
+  "magic_word": "I love you",
+  "magic_action_free": "Looking delighted, it stands up against my chest and  affectionately licks my chin.",
+  "color_free": "Its face has a mix of black and brown markings, similar to those of a Papillon. The body and the area around its nose is white.",
+  "ear_free": "Slightly drooping ears",
+  "tail_free": "medium length, color:white",
+  "pattern_free": "Its face has a mix of black and brown markings, similar to those of a Papillon. The body and the area around its nose is white."
+}

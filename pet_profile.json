@@ -1,0 +1,19 @@
+{
+  "species": "Dog",
+  "breed": "Mixed breed dog",
+  "name": "Taro",
+  "gender": "Male",
+  "age": "1",
+  "color": "White",
+  "fur_length": "Long",
+  "ear": "Other",
+  "tail": "Other",
+  "pattern": "Other",
+  "memo": "",
+  "magic_word": "I love you",
+  "magic_action_free": "It nuzzles against my chest, stands up, and licks my chin.",
+  "color_free": "",
+  "ear_free": "",
+  "tail_free": "Curled tail",
+  "pattern_free": "A pattern resembling a Papillon"
+}
