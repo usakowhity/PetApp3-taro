@@ -1,4 +1,4 @@
-# controller.py (Final English Edition for PetApp3 Taro)
+# controller.py (PetApp3 Portable – Name Call Enabled Edition)
 
 import os
 import json
@@ -106,17 +106,43 @@ class Controller(QObject):
         print("[Controller] generated folder scanned:", self.media)
 
     # ---------------------------------------------------------
-    # UI Navigation
+    # Voice Commands (PetApp3 Portable – Name Call Enabled)
     # ---------------------------------------------------------
-
     def prepare_voice_commands(self):
         """
-        PetApp2 互換のダミー関数。
-        StepB2BreedWindow が呼び出すため、空でも必ず存在させる。
-        PetApp3 では STATE_ALIAS_EN により音声コマンドは自動処理される。
+        Add pet name as a positive (p2) command.
+        This restores PetApp2-style “name call = praise” behavior.
         """
-        print("[Controller] prepare_voice_commands (dummy) called")
 
+        name = self.pet_profile.get("name", "").strip().lower()
+        if not name:
+            print("[Controller] prepare_voice_commands: no name found")
+            return
+
+        # Add base name
+        STATE_ALIAS_EN[name] = "p2"
+
+        # Variations
+        variations = [
+            name,
+            f"{name}!",
+            f"{name}!!",
+            f"hey {name}",
+            f"{name} come",
+            f"{name} good boy",
+            f"{name} good girl",
+            f"come here {name}",
+            f"{name} i love you",
+        ]
+
+        for v in variations:
+            STATE_ALIAS_EN[v.lower()] = "p2"
+
+        print("[Controller] prepare_voice_commands: name added to p2 →", name)
+
+    # ---------------------------------------------------------
+    # UI Navigation
+    # ---------------------------------------------------------
     def show_welcome(self):
         from ui.welcome_window_en import WelcomeWindow
         self.win = WelcomeWindow(self)
@@ -147,6 +173,9 @@ class Controller(QObject):
         print("[Controller] StepAllPromptsView started")
 
     def show_play(self):
+        # ★ 名前呼び対応を有効化（PetApp2 互換）
+        self.prepare_voice_commands()
+
         from ui.play_window_en import PlayWindow
         self.win = PlayWindow(self)
         self.win.show()
@@ -166,7 +195,6 @@ class Controller(QObject):
         self.win = StepAIGuideEn(self)
         self.win.show()
         print("[Controller] StepAIGuideForMedia started")
-
 
     # ---------------------------------------------------------
     # Whisper Listener
